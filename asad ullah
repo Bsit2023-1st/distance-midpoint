@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+struct Point {
+    int x;
+    int y;
+};
+
+
+double calculateDistance(Point p1, Point p2) {
+    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+}
+
+Point calculateMidpoint(Point p1, Point p2) {
+    Point midpoint;
+    midpoint.x = (p1.x + p2.x) / 2;
+    midpoint.y = (p1.y + p2.y) / 2;
+    return midpoint;
+}
+
+Point translatePoint(Point p, int dx, int dy) {
+    Point translated;
+    translated.x = p.x + dx;
+    translated.y = p.y + dy;
+    return translated;
+}
+
+int main() {
+    Point p1, p2;
+    int dx, dy;
+
+
+    cout << "Enter the coordinates of the first point (x1 y1): ";
+    cin >> p1.x >> p1.y;
+
+    cout << "Enter the coordinates of the second point (x2 y2): ";
+    cin >> p2.x >> p2.y;
+
+    double distance = calculateDistance(p1, p2);
+    cout << "Distance between the points: " << distance << endl;
+
+
+    Point midpoint = calculateMidpoint(p1, p2);
+    cout << "Midpoint between the points: (" << midpoint.x << ", " << midpoint.y << ")" << endl;
+
+    cout << "Enter the translation vector (dx dy): ";
+    cin >> dx >> dy;
+
+
+    Point translatedP1 = translatePoint(p1, dx, dy);
+    cout << "Translated first point: (" << translatedP1.x << ", " << translatedP1.y << ")" << endl;
+
+
+    Point translatedP2 = translatePoint(p2, dx, dy);
+    cout << "Translated second point: (" << translatedP2.x << ", " << translatedP2.y << ")" << endl;
+
+    return 0;
+}
